@@ -1,6 +1,6 @@
 export const variables = {
-  h1: '6.2rem',
-  h2: '4.8rem',
+  h1: '4.8rem',
+  h2: '3.6rem',
   h3: '2.4rem',
   p: '1.6rem',
   button: '#39d353',
