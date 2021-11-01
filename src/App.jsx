@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { BsSearch } from 'react-icons/bs'
 import axios from 'axios'; 
  
-import Header from "./components/Header.jsx";
-import InputArea from "./components/InputArea.jsx";
-import Profile from "./components/Profile.jsx";
+import Header from "./components/Header";
+import InputArea from "./components/InputArea";
+import Profile from "./components/Profile";
 import Globals from './GlobalStyles.js';
 
 function App() {
@@ -42,7 +42,7 @@ function App() {
             {error}
           </legend>
         }
-        <span className="errorTimeout">{setTimeout(() => { setError('') }, 4000)}</span>
+        <span className="errorTimeout">{setTimeout(() => { setError('') }, 5000)}</span>
       </InputArea>
       {
         !error &&
