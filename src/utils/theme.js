@@ -7,6 +7,7 @@ export const variables = {
   background: '#0d1117',
   text: '#f0f6fc',
   border: '#30363d',
+  error: '#f15849',
   
   lightBackground: '#f0f6fc',
   lightText: '#0d1117'

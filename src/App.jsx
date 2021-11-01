@@ -1,16 +1,15 @@
 import { useState } from 'react';
-import axios from 'axios'; 
-import { createGlobalStyle } from "styled-components";
 import { BsSearch } from 'react-icons/bs'
+import axios from 'axios'; 
  
 import Header from "./components/Header.jsx";
 import InputArea from "./components/InputArea.jsx";
 import Profile from "./components/Profile.jsx";
-
-import { variables } from './utils/theme.js';
+import Globals from './GlobalStyles.js';
 
 function App() {
   const [user, setUser] = useState('');
+  const [error, setError] = useState('');
   const [userData, setUserData] = useState();
 
   return (
@@ -19,10 +18,11 @@ function App() {
       <Header />
       <InputArea>
         <form 
-          onSubmit={(e) => {
+          onSubmit={ (e) => {
             e.preventDefault();
             axios.get(`https://api.github.com/users/${user}`)
-                 .then((res) => setUserData(res.data))
+            .then((res) => setUserData(res))
+            .catch((err) => setError(err.message))
           }}
         >
           <input 
@@ -31,65 +31,30 @@ function App() {
             id="search" 
             placeholder="Search the profile here"
             value={user}
-            onChange={(e) => {setUser(e.target.value);}}
+            onChange={(e) => {setUser(e.target.value)}}
           />
           <button type="submit">
             <BsSearch/>
           </button>
         </form>
+        <legend>{error}</legend>
       </InputArea>
-      { console.log(userData) }
       {
-       userData && 
-        <Profile 
-          name={userData.name}
-          username={userData.username}
-          followers={userData.followers}
-          following={userData.following}
-          publicRepos={userData.public_repos}
-          bio={userData.bio}
-          avatarUrl={userData.avatar_url}
-          url={userData.html_url}
-        />
-      }
+        !error &&
+         userData && 
+           <Profile 
+             name={userData.data.name}
+             username={userData.data.username}
+             followers={userData.data.followers}
+             following={userData.data.following}
+             publicRepos={userData.data.public_repos}
+             bio={userData.data.bio}
+             avatarUrl={userData.data.avatar_url}
+             url={userData.data.html_url}
+           />
+       }
     </>
   );
 }
-
-const Globals = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 62.5%
-  }
-
-  body {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background-color: ${variables.background};
-
-    font-family: 'Roboto', sans-serif;
-    color: ${variables.text};
-    h1 {
-      font-size: ${variables.h1};
-    }
-    h2 {
-      font-size: ${variables.h2};
-    }
-    h3 {
-      font-size: ${variables.h3};
-    }
-    p {
-      font-size: ${variables.p};
-    }
-  }
-
-  body.light {
-    background-color: ${variables.lightBackground};
-    color: ${variables.lightText}
-  }
-`
 
 export default App;
