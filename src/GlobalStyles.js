@@ -30,6 +30,9 @@ const Globals = createGlobalStyle`
     p {
       font-size: ${variables.p};
     }
+    .errorTimeout {
+      display: none;
+    }
   }
 
   body.light {

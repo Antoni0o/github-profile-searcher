@@ -8,8 +8,8 @@ import Profile from "./components/Profile.jsx";
 import Globals from './GlobalStyles.js';
 
 function App() {
-  const [user, setUser] = useState('');
   const [error, setError] = useState('');
+  const [user, setUser] = useState('');
   const [userData, setUserData] = useState();
 
   return (
@@ -37,7 +37,12 @@ function App() {
             <BsSearch/>
           </button>
         </form>
-        <legend>{error}</legend>
+        {error && 
+          <legend>
+            {error}
+          </legend>
+        }
+        <span className="errorTimeout">{setTimeout(() => { setError('') }, 4000)}</span>
       </InputArea>
       {
         !error &&
