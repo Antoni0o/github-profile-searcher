@@ -39,6 +39,23 @@ const Globals = createGlobalStyle`
     background-color: ${variables.lightBackground};
     color: ${variables.lightText}
   }
+
+  @media(max-width: 1024px) {
+    height: 100%;
+    * {
+      font-size: 50%;
+    } 
+    body {
+      overflow-y: scroll;
+      overflow-x: hidden;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
 `
 
 export default Globals; 

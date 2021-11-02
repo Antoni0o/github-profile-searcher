@@ -20,6 +20,9 @@ const LogoWrapper = styled.div`
     font-size: ${variables.h1};
   }
   
+  @media(max-width: 1024px) {
+    text-align: center;
+  }
 `
 
 export default LogoWrapper;

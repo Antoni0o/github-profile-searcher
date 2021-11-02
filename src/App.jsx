@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BsSearch } from 'react-icons/bs'
 import axios from 'axios'; 
- 
+
 import Header from "./components/Header";
 import InputArea from "./components/InputArea";
 import Profile from "./components/Profile";
@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <Globals />
-      <Header />
+      <Header/>
       <InputArea>
         <form 
           onSubmit={ (e) => {
@@ -46,17 +46,17 @@ function App() {
       </InputArea>
       {
         !error &&
-         userData && 
-           <Profile 
-             name={userData.data.name}
-             username={userData.data.username}
-             followers={userData.data.followers}
-             following={userData.data.following}
-             publicRepos={userData.data.public_repos}
-             bio={userData.data.bio}
-             avatarUrl={userData.data.avatar_url}
-             url={userData.data.html_url}
-           />
+         userData &&
+          <Profile
+            name={userData.data.name}
+            username={userData.data.login}
+            followers={userData.data.followers}
+            following={userData.data.following}
+            publicRepos={userData.data.public_repos}
+            bio={userData.data.bio}
+            avatarUrl={userData.data.avatar_url}
+            url={userData.data.html_url}
+          />
        }
     </>
   );

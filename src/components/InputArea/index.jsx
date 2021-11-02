@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { variables } from "../utils/theme";
+import { variables } from "../../utils/theme";
 
 const InputArea = styled.div`
   display: flex;
